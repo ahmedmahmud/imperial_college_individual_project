@@ -1,0 +1,19 @@
+\chapter{Evaluation}
+\section{Benchmarking}
+Evaluation will be done similarly to \cite{mcaleese_comparative_2024}, however, we will focus on decoder-only models instead of encoder-only.
+
+We will use an autoregressive decoder-only model such as Gemma \cite{mesnard_gemma_2024} for the LLM, performing binary classification on input sequences. We will consider other open-source LLMs too.
+
+Datasets will need to be binary classification as well. Some examples of datasets to consider would be SST-2 \cite{socher2013recursive}, a binary sentiment classification dataset and QNLI \cite{wang2019gluemultitaskbenchmarkanalysis}, a binary natural language inference dataset. We will consider other open-source datasets as well.
+
+The metrics we will evaluate over:
+\begin{itemize}
+    \item \textbf{Validity - Label flip score}. This score represents the ratio of counterfactuals generated that actually flip the output class.
+    \item \textbf{Sparsity - Normalized Levenshtein similarity.} Levenshtein \cite{haldar_levenshtein_2011} distance measures the distance between two strings. The closer they are, the higher the similarity score will be. We normalise this due to varying string widths per counterfactual.
+    \item \textbf{Plausibility - Perplexity.} As proposed in \cite{pope_text_2021}, the perplexity is the modelling loss of a GPT-2 model which judges how plausible a counterfactual is.
+\end{itemize}
+
+\section{Success Criteria}
+Quantitatively, we would regard a method that has high flip scores whilst also having low perplexity and being relatively similar to the original input as successful as it would be an improvement on the existing methods for counterfactual generation. We also would hope it would generalise to the dataset or context it is used in so that it is robust.
+
+Qualitatively we would see if the actual generated counterfactuals are understandable and helpful to humans and we feel that we have gained realistic insight into the inner workings of the LLM. Also if it worked in contexts such as finance or healthcare would also be a good indicator to how successful it is.

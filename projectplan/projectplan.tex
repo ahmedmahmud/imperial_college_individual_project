@@ -1,0 +1,57 @@
+\chapter{Project Plan}
+
+\section{Initial literature review}
+First, understanding the problem and the motivation behind it is important. In our case, this would be understanding the current landscape for counterfactual explanation generation on textual data and the issues with it. Also, understand why we'd want counterfactuals and how they would be used allowing us to define success criteria for our solution to the problem. Any foundational knowledge needed to understand the problem and its domain would naturally be required as well. In our case, this was understanding the transformer architecture with an added understanding of explainable AI (XAI).
+
+After we had a good understanding of the problem and the issues with related work in the area, we could focus on researching relevant areas for potential solutions. For us, this was looking at mechanistic interpretability for large language models (LLMs) and specific methods that could help us build on previous methods. We were specifically interested in behaviour localisation and decoding information into token space.
+
+\section{Initial proposed approach}
+If we take a look at where existing methods fail to generate high-quality counterfactuals we 
+We want to combine white-box introspection methods that allow for behaviour localisation such as calculating gradients to find areas we can change. From there we find a perturbation that changes the output classification. Then to decode semantic information of the perturbed embedding as natural text, we utilise \texttt{Patchscopes}, such as token identity, to create a substitution and build our counterfactual.
+
+\section{Alternative approach}
+If the initial approach doesn't seem to work at first we would initially try altering the components such as different methods for candidate selection and/or configurations of \texttt{Patchscope} to address any issues we may be able to decipher. Otherwise, we would review other methods of mechanistic interpretability that we may be able to leverage, such as spare auto-encoders.
+
+\section{Extensions}
+If time allows we could look at optimising and improving the initial approach, for example, by trying and benchmarking variations to the \textit{Patchscope} configuration or looking at runtime optimisations. This could also allow us to think about counterfactual data augmentation. Or possibly a user interface visually showing the inner mechanics of the LLM with user-defined parameters or granularity of counterfactuals.
+
+\section{Miscellaneous}
+I will also be doing further research during the rest of the project to stay up to date due to the rapid evolution of the field. Reproducibility and understanding for every step are very important, and to achieve this, any code must be reproducible through committed Python scripts or a Python notebook with documentation of my progress and results for each step. This will make it much easier when it comes to tracing the work I have done and writing the final report of my writings
+
+\section{Timeline}
+\begin{itemize}
+    \item January:
+            \begin{itemize}
+            \item Initial research and literature review
+            \item Granular analysis on problematic inputs for existing baseline methods
+        \end{itemize}
+    \item February:
+            \begin{itemize}
+            \item Setup an LLM locally
+            \item Implement localisation methods such as gradient analysis
+            \item Calculate perturbations on embeddings for counterfactuals
+        \end{itemize}
+    \item March:
+            \begin{itemize}
+            \item Implement an abstraction for \textit{Patchscopes}
+            \item Find a \textit{Patchscope} configuration to decode natural text from perturbed embeddings
+            \item Do initial benchmarking
+        \end{itemize}
+    \item April:
+            \begin{itemize}
+            \item Iterate on the proposed method, improving its performance either quantitatively or qualitatively
+            \item Benchmark other configurations
+            \item \textit{Exam preparation!}
+        \end{itemize}
+    \item May:
+        \begin{itemize}
+            \item Code baseline methods for evaluation
+            \item Source datasets for evaluation
+            \item Run evaluation of proposed method against baselines on evaluation metrics
+        \end{itemize}
+    \item June:
+        \begin{itemize}
+            \item Write out an initial draft of the report
+            \item Iterate on the report based on feedback
+        \end{itemize}
+\end{itemize}
